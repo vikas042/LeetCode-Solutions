@@ -1,6 +1,5 @@
 /*
 Problem: Two Sum
-LeetCode: https://leetcode.com/problems/two-sum/
 Difficulty: Easy
 
 Approach:
