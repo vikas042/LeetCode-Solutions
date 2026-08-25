@@ -1,36 +1,42 @@
 /*
-Problem: Contains Duplicate
+Problem: Majority Element
 Difficulty: Easy
 
 Approach:
 
-1. Use a HashSet to store visited elements.
-2. Traverse the array.
-3. If an element already exists in the set,
-   return true.
-4. Otherwise, add it to the set.
-5. If no duplicate is found, return false.
+1. Use Boyer-Moore Voting Algorithm.
+2. Maintain a candidate and its count.
+3. If count becomes 0, select the current number
+   as the new candidate.
+4. Same number -> increase count.
+5. Different number -> decrease count.
+6. The final candidate is the majority element.
 
-Time Complexity: O(n) average
-Space Complexity: O(n)
+Time Complexity: O(n)
+Space Complexity: O(1)
 */
 
 class Solution {
 
-    public boolean containsDuplicate(int[] nums) {
+    public int majorityElement(int[] nums) {
 
-        HashSet<Integer> set = new HashSet<>();
+        int candidate = 0;
+        int count = 0;
 
         for (int num : nums) {
 
-            if (set.contains(num)) {
-                return true;
+          
+            if (count == 0) {
+                candidate = num;
             }
 
-            // Store the number
-            set.add(num);
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
         }
 
-        return false;
+        return candidate;
     }
 }
